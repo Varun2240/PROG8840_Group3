@@ -10,7 +10,7 @@ while (true)
 
     //added to terminate the program
     //changed the number as added other functions
-    if (OptionChoice == "10")
+    if (OptionChoice == "14")
     {
         Console.WriteLine("Exiting calculator..");
         Environment.Exit(0);
@@ -18,14 +18,25 @@ while (true)
     }
     
     //added to select a valid operation
-    if (OptionChoice != "1" && OptionChoice != "2" && OptionChoice != "3" && OptionChoice != "4" && OptionChoice != "5" && OptionChoice != "6" && OptionChoice != "7" && OptionChoice != "8" && OptionChoice != "9")
+    if (OptionChoice != "1" && OptionChoice != "2" && OptionChoice != "3" && OptionChoice != "4" && OptionChoice != "5" && OptionChoice != "6" && OptionChoice != "7" && OptionChoice != "8" && OptionChoice != "9" && OptionChoice != "10" && OptionChoice != "11" && OptionChoice != "12" && OptionChoice != "13")
     {
         Console.WriteLine("Invalid option. Please select a valid operation.");
         continue;
     }
 
     //added sqrt, exponentiation & log function switch cases
-    if (OptionChoice == "4" || OptionChoice == "5" || OptionChoice == "6" || OptionChoice == "7" || OptionChoice == "8" || OptionChoice == "9")
+    if(OptionChoice == "13")
+    {
+        
+            Console.WriteLine("Enter time in Japan (24-hour format): ");
+            string? japanTimeStr = Console.ReadLine();
+            DateTime japanTime = DateTime.ParseExact(japanTimeStr, "HH:mm", null);
+            DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+            Console.WriteLine($"Time in Canada: {canadaTime:HH:mm}");
+        
+    }
+    
+    else if (OptionChoice == "4" || OptionChoice == "5" || OptionChoice == "6" || OptionChoice == "7" || OptionChoice == "8" || OptionChoice == "9" || OptionChoice == "10" || OptionChoice == "11" || OptionChoice == "12")
     {
         Console.WriteLine("Enter the value: ");
         string? number1 = Console.ReadLine();
@@ -67,9 +78,32 @@ while (true)
                 result = TemperatureConversion.CelsiusToFahrenheit(number1Converted);
                 Console.WriteLine($"{number1Converted}°C = {result}°F");
                 break;
-                   
+            case "10":
+                Console.WriteLine("Enter interest rate (in %): ");
+                string? interestRateStr = Console.ReadLine();
+                float interestRate = float.Parse(interestRateStr);
+                Console.WriteLine("Enter time period (in years): ");
+                string? timePeriodStr = Console.ReadLine();
+                float timePeriod = float.Parse(timePeriodStr);
+                result = InterestCalculator.CalculateSimpleInterest(number1Converted, interestRate, timePeriod);
+                Console.WriteLine($"Simple interest: {result}");
+                break;
+
+            case "11":
+                result = UnitConverter.ConvertFromKgToLb(number1Converted);
+                Console.WriteLine($"{number1Converted} kg = {result} lb");
+                break;
+
+            case "12":
+               
+                result = CurrencyConverter.ConvertFromUSDToEUR(number1Converted);
+                Console.WriteLine($"{number1Converted} USD = {result} EUR");
+                break;
+
         }
+
     }
+
     else
     {
 

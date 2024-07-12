@@ -27,6 +27,19 @@ namespace Calculator{
                 case "!":
                     result = Factorial.Calculate((int)Operands[0]);
                     break;
+                case "simpleInterest":
+                    result = InterestCalculator.CalculateSimpleInterest(Operands[0], Operands[1], (int)Operands[2]);
+                    break;
+                case "kgToLb":
+                    result = UnitConverter.ConvertFromKgToLb(Operands[0]);
+                    break;
+                case "usdToEur":
+                    result = CurrencyConverter.ConvertFromUSDToEUR(Operands[0]);
+                    break;
+                case "japanToCanada":
+                    result = TimeZoneConverter.ConvertJapanToCanada(DateTime.UtcNow).Ticks;
+                    break;
+
                 default:
                     throw new Exception("unimplemented");
             }

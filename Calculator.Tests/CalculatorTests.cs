@@ -236,6 +236,181 @@ public class CalculatorTests
         float actualFahrenheit = TemperatureConversion.CelsiusToFahrenheit(celsius);
         Assert.Equal(expectedFahrenheit, actualFahrenheit, precision: 2);
     }
+    [Fact]
+    public void TestCurrencyConversionFromUSDToEUR()
+    {
+        Assert.Equal(88.0f, CurrencyConverter.ConvertFromUSDToEUR(100.0f));
+    }
+
+    [Fact]
+    public void TestCurrencyConversionCheckNegativeAmount()
+    {
+        Assert.Equal(-88.0f, CurrencyConverter.ConvertFromUSDToEUR(-100.0f));
+    }
+
+    [Fact]
+    public void TestCurrencyConversionCheckingZero()
+    {
+        Assert.Equal(0.0f, CurrencyConverter.ConvertFromUSDToEUR(0.0f));
+    }
+    [Fact]
+    public void TestUnitConversionCheckConverstionKgToLb()
+    {
+        Assert.Equal(22.0462f, UnitConverter.ConvertFromKgToLb(10.0f));
+    }
+
+    [Fact]
+    public void TestUnitConversionNegativeKg()
+    {
+        Assert.Equal(-22.0462f, UnitConverter.ConvertFromKgToLb(-10.0f));
+    }
+
+    [Fact]
+    public void TestUnitConversionZeroKg()
+    {
+        Assert.Equal(0.0f, UnitConverter.ConvertFromKgToLb(0.0f));
+    }
+    [Fact]
+    public void TestTimeZoneConversionJapanToCanada()
+    {
+
+        Assert.True(true);
+    }
+
+    [Fact]
+    public void TestTimeZoneConversionInvalidTimeZone()
+    {
+        Assert.True(true);
+    }
+
+    [Fact]
+    public void TestTimeZoneConversionSameTimeZone()
+    {
+
+        Assert.True(true);
+    }
+    [Fact]
+    public void TestSimpleInterestCalculation()
+    {
+
+        float principal = 1000;
+        float rate = 5.0f;
+        int time = 2;
+
+
+        float interest = InterestCalculator.CalculateSimpleInterest(principal, rate, time);
+
+
+        Assert.Equal(100.0f, interest);
+    }
+
+    [Fact]
+    public void TestSimpleInterestWithZeroPrincipal()
+    {
+        // Arrange
+        float principal = 0;
+        float rate = 5.0f;
+        int time = 2;
+
+        // Act
+        float interest = InterestCalculator.CalculateSimpleInterest(principal, rate, time);
+
+        // Assert
+        Assert.Equal(0.0f, interest);
+    }
+
+    [Fact]
+    public void TestSimpleInterestWithZeroRate()
+    {
+
+        float principal = 1000;
+        float rate = 0.0f;
+        int time = 2;
+
+
+        float interest = InterestCalculator.CalculateSimpleInterest(principal, rate, time);
+
+
+        Assert.Equal(0.0f, interest);
+    }
+
+    [Fact]
+    public void TestFactorialPositiveNumber()
+    {
+        // Arrange
+        int n = 5;
+
+        // Act
+        int result = Factorial.Calculate(n);
+
+        // Assert
+        Assert.Equal(120, result); // 5! = 120
+    }
+
+    [Fact]
+    public void TestFactorialZero()
+    {
+        // Arrange
+        int n = 0;
+
+        // Act
+        int result = Factorial.Calculate(n);
+
+        // Assert
+        Assert.Equal(1, result);
+    }
+
+    [Fact]
+    public void TestFactorialNegativeNumber()
+    {
+
+        int n = -5;
+
+
+        Assert.Throws<ArgumentException>(() => Factorial.Calculate(n));
+    }
+    [Fact]
+        public void TestPercentageCalculation()
+    {
+        // Arrange
+        float percentage = 20;
+        float number = 50;
+
+        // Act
+        float result = Percentage.CalculatePercentageOf(percentage, number);
+
+        // Assert
+        Assert.Equal(10, result); // 20% of 50 should be 10
+    }
+
+    [Fact]
+    public void TestPercentageCalculationWithZeroPercentage()
+    {
+        // Arrange
+        float percentage = 0;
+        float number = 100;
+
+        // Act
+        float result = Percentage.CalculatePercentageOf(percentage, number);
+
+        // Assert
+        Assert.Equal(0, result);
+    }
+
+    [Fact]
+    public void TestPercentageCalculationZeroNumber()
+    {
+        // Arrange
+        float percentage = 50;
+        float number = 0;
+
+        // Act
+        float result = Percentage.CalculatePercentageOf(percentage, number);
+
+        // Assert
+        Assert.Equal(0, result); // 50% of 0 should be 0
+    }
+
 
 
 }

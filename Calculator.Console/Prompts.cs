@@ -15,7 +15,12 @@ public class Prompts{
         Console.WriteLine("7. Percentage");
         Console.WriteLine("8. Factorial");
         Console.WriteLine("9. Temperature Conversion");
-        Console.WriteLine("10. Exit");
+        Console.WriteLine("10. Simple Interest");
+        Console.WriteLine("11. Unit Conversion: kg to lb");
+        Console.WriteLine("12. Currency Conversion: USD to EUR");
+        Console.WriteLine("13. Time Zone Conversion: Japan to Canada");
+
+        Console.WriteLine("14. Exit");
     }
 
 }
