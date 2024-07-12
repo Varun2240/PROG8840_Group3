@@ -23,6 +23,38 @@ while (true)
         continue;
     }
 
+    //added sqrt, exponentiation & log function switch cases
+    if (OptionChoice == "4" || OptionChoice == "5" || OptionChoice == "6")
+    {
+        Console.WriteLine("Enter the value: ");
+        string? number1 = Console.ReadLine();
+
+        float number1Converted = float.Parse(number1);
+        float result = 0;
+        switch (OptionChoice)
+        {
+            case "4":
+                result = SquareRoot.Eval(number1Converted);
+                Console.WriteLine($"Square root of {number1Converted} = {result}");
+                break;
+            case "5":
+                Console.WriteLine("Enter the exponent: ");
+                string? exponent = Console.ReadLine();
+                float exponentConverted = float.Parse(exponent);
+                result = Exponentiation.Eval(number1Converted, exponentConverted);
+                Console.WriteLine($"{number1Converted} to the power of {exponentConverted} = {result}");
+                break;
+            case "6":
+                Console.WriteLine("Enter the base value: ");
+                string? baseValue = Console.ReadLine();
+                float baseConverted = float.Parse(baseValue);
+                result = LogarithmicFunction.Eval(number1Converted, baseConverted);
+                Console.WriteLine($"Log base {baseConverted} of {number1Converted} = {result}");
+                break;
+        }
+    }
+    else
+    {
 
         Console.WriteLine("Enter number 1: ");
         string? Number1 = Console.ReadLine();
@@ -50,7 +82,7 @@ while (true)
                 break;
 
         }
-    
+    }
 
     // Added to ask user if they want to perform another operation
     Console.WriteLine("Do you want to perform another operation? (yes/no): ");
