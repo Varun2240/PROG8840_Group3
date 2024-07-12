@@ -1,4 +1,5 @@
 ﻿using Calculator;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 Prompts.PrintWelcomeMenu();
 while (true)
@@ -9,7 +10,7 @@ while (true)
 
     //added to terminate the program
     //changed the number as added other functions
-    if (OptionChoice == "7")
+    if (OptionChoice == "10")
     {
         Console.WriteLine("Exiting calculator..");
         Environment.Exit(0);
@@ -17,14 +18,14 @@ while (true)
     }
     
     //added to select a valid operation
-    if (OptionChoice != "1" && OptionChoice != "2" && OptionChoice != "3" && OptionChoice != "4" && OptionChoice != "5" && OptionChoice != "6")
+    if (OptionChoice != "1" && OptionChoice != "2" && OptionChoice != "3" && OptionChoice != "4" && OptionChoice != "5" && OptionChoice != "6" && OptionChoice != "7" && OptionChoice != "8" && OptionChoice != "9")
     {
         Console.WriteLine("Invalid option. Please select a valid operation.");
         continue;
     }
 
     //added sqrt, exponentiation & log function switch cases
-    if (OptionChoice == "4" || OptionChoice == "5" || OptionChoice == "6")
+    if (OptionChoice == "4" || OptionChoice == "5" || OptionChoice == "6" || OptionChoice == "7" || OptionChoice == "8" || OptionChoice == "9")
     {
         Console.WriteLine("Enter the value: ");
         string? number1 = Console.ReadLine();
@@ -51,6 +52,22 @@ while (true)
                 result = LogarithmicFunction.Eval(number1Converted, baseConverted);
                 Console.WriteLine($"Log base {baseConverted} of {number1Converted} = {result}");
                 break;
+            case "7":
+                Console.WriteLine("Enter the percentage: ");
+                string? percentageInput = Console.ReadLine();
+                float percentage = float.Parse(percentageInput);
+                result = Percentage.CalculatePercentageOf(percentage, number1Converted);
+                Console.WriteLine($"{percentage}% of {number1Converted} = {result}");
+                break;
+            case "8":
+                result = Factorial.Calculate((int)number1Converted);
+                Console.WriteLine($"Factorial of {number1Converted} = {result}");
+                break;
+            case "9":
+                result = TemperatureConversion.CelsiusToFahrenheit(number1Converted);
+                Console.WriteLine($"{number1Converted}°C = {result}°F");
+                break;
+                   
         }
     }
     else

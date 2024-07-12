@@ -12,7 +12,10 @@ public class Prompts{
         Console.WriteLine("4. Square Root");
         Console.WriteLine("5. Exponentiation");
         Console.WriteLine("6. Log Function");
-        Console.WriteLine("7. Exit");
+        Console.WriteLine("7. Percentage");
+        Console.WriteLine("8. Factorial");
+        Console.WriteLine("9. Temperature Conversion");
+        Console.WriteLine("10. Exit");
     }
 
 }

@@ -21,6 +21,12 @@ namespace Calculator{
                 case "log":
                     result = LogarithmicFunction.Eval(Operands[0], Operands[1]);
                     break;
+                case "%":
+                    result = Percentage.CalculatePercentageOf(Operands[0], Operands[1]);
+                    break;
+                case "!":
+                    result = Factorial.Calculate((int)Operands[0]);
+                    break;
                 default:
                     throw new Exception("unimplemented");
             }

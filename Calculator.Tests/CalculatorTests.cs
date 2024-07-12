@@ -207,4 +207,35 @@ public class CalculatorTests
         Exception exception = Assert.Throws<Exception>(() => Evaluator.Eval(operatorName, operands));
         Assert.Equal("unimplemented", exception.Message);
     }
+
+    [Fact]
+    public void TestCelsiusToFahrenheitZeroConversion()
+    {
+       
+        float celsius = 0;
+        float expectedFahrenheit = 32;
+        float actualFahrenheit = TemperatureConversion.CelsiusToFahrenheit(celsius);
+        Assert.Equal(expectedFahrenheit, actualFahrenheit, precision: 2);
+    }
+
+    [Fact]
+    public void TestCelsiusToFahrenheitPositiveConversion()
+    {
+
+        float celsius = 5;
+        float expectedFahrenheit = 41;
+        float actualFahrenheit = TemperatureConversion.CelsiusToFahrenheit(celsius);
+        Assert.Equal(expectedFahrenheit, actualFahrenheit, precision: 2);
+    }
+
+    [Fact]
+    public void TestCelsiusToFahrenheitNegativeConversion()
+    {
+        float celsius = -10;
+        float expectedFahrenheit = 14;
+        float actualFahrenheit = TemperatureConversion.CelsiusToFahrenheit(celsius);
+        Assert.Equal(expectedFahrenheit, actualFahrenheit, precision: 2);
+    }
+
+
 }
