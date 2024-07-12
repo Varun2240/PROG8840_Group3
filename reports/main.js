@@ -222,12 +222,19 @@ var assemblies = [
     "name": "Calculator",
     "classes": [
       { "name": "Calculator.Add", "rp": "Calculator_Add.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Calculator.Evaluator", "rp": "Calculator_Evaluator.html", "cl": 17, "ucl": 0, "cal": 17, "tl": 30, "cb": 12, "tb": 12, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.CurrencyConverter", "rp": "Calculator_CurrencyConverter.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.Evaluator", "rp": "Calculator_Evaluator.html", "cl": 27, "ucl": 2, "cal": 29, "tl": 49, "cb": 52, "tb": 54, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Calculator.Exponentiation", "rp": "Calculator_Exponentiation.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.Factorial", "rp": "Calculator_Factorial.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 21, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.InterestCalculator", "rp": "Calculator_InterestCalculator.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Calculator.LogarithmicFunction", "rp": "Calculator_LogarithmicFunction.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Calculator.Multiply", "rp": "Calculator_Multiply.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.Percentage", "rp": "Calculator_Percentage.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 12, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Calculator.SquareRoot", "rp": "Calculator_SquareRoot.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 15, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Calculator.Subtract", "rp": "Calculator_Subtract.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.TemperatureConversion", "rp": "Calculator_TemperatureConversion.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.TimeZoneConverter", "rp": "Calculator_TimeZoneConverter.html", "cl": 5, "ucl": 0, "cal": 5, "tl": 17, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Calculator.UnitConverter", "rp": "Calculator_UnitConverter.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -236,9 +243,17 @@ var metrics = [{ "name": "Crap Score", "abbreviation": "crp", "explanationUrl": 
 var historicCoverageExecutionTimes = [];
 
 var riskHotspotMetrics = [
+      { "name": "Crap Score", "explanationUrl": "https://googletesting.blogspot.de/2011/02/this-code-is-crap.html" },
+      { "name": "Cyclomatic complexity", "explanationUrl": "https://en.wikipedia.org/wiki/Cyclomatic_complexity" },
 ];
 
 var riskHotspots = [
+  {
+    "assembly": "Calculator", "class": "Calculator.Evaluator", "reportPath": "Calculator_Evaluator.html", "methodName": "Eval(System.String,System.Single[])", "methodShortName": "Eval(...)", "fileIndex": 0, "line": 3,
+    "metrics": [
+      { "value": 54.96, "exceeded": true },
+      { "value": 54, "exceeded": true },
+    ]},
 ];
 
 var branchCoverageAvailable = true;

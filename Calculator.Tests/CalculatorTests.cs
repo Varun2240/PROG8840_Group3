@@ -411,6 +411,126 @@ public class CalculatorTests
         Assert.Equal(0, result); // 50% of 0 should be 0
     }
 
+    [Fact]
+    public void TestConvertJapanToCanada()
+    {
+        // Arrange
+        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 PM JST
 
+        // Act
+        DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+
+        // Assert
+        // Calculate expected Canada time manually
+        DateTime expectedCanadaTime = japanTime + (TimeSpan.FromHours(-5) - TimeSpan.FromHours(9)); // Adjust according to actual offsets
+
+        Assert.Equal(expectedCanadaTime, canadaTime);
+    }
+    [Fact]
+    public void TestSimpleInterestCalculation2()
+    {
+        // Arrange
+        float principal = 1000;
+        float rate = 5.0f;
+        int time = 2;
+
+        // Act
+        float interest = InterestCalculator.CalculateSimpleInterest(principal, rate, time);
+
+        // Assert
+        Assert.Equal(100.0f, interest);
+    }
+
+    [Fact]
+    public void TestKgToLbConversion()
+    {
+        // Arrange
+        float kg = 10.0f;
+
+        // Act
+        float lb = UnitConverter.ConvertFromKgToLb(kg);
+
+        // Assert
+        Assert.Equal(22.0462f, lb, 4); // Adjust precision as needed
+    }
+
+    [Fact]
+    public void TestUsdToEurConversion()
+    {
+        // Arrange
+        float usd = 100.0f;
+
+        // Act
+        float eur = CurrencyConverter.ConvertFromUSDToEUR(usd);
+
+        // Assert
+        Assert.Equal(88.0f, eur);
+    }
+    [Fact]
+    public void TestPercentageCalculation1()
+    {
+        // Arrange
+        float[] operands = { 20, 50 };
+
+        // Act
+        float result = Evaluator.Eval("%", operands);
+
+        // Assert
+        Assert.Equal(10, result); // 20% of 50 should be 10
+    }
+
+    [Fact]
+    public void TestFactorialCalculation()
+    {
+        // Arrange
+        float[] operands = { 5 };
+
+        // Act
+        float result = Evaluator.Eval("!", operands);
+
+        // Assert
+        Assert.Equal(120, result); // 5! = 120
+    }
+
+    [Fact]
+    public void TestSimpleInterestCalculation1()
+    {
+        // Arrange
+        float[] operands = { 1000, 5.0f, 2 };
+
+        // Act
+        float result = Evaluator.Eval("simpleInterest", operands);
+
+        // Assert
+        Assert.Equal(100.0f, result);
+    }
+
+    [Fact]
+    public void TestKgToLbConversion1()
+    {
+        // Arrange
+        float[] operands = { 10.0f };
+
+        // Act
+        float result = Evaluator.Eval("kgToLb", operands);
+
+        // Assert
+        Assert.Equal(22.0462f, result, 4); // Adjust precision as needed
+    }
+
+    [Fact]
+    public void TestUsdToEurConversion1()
+    {
+        // Arrange
+        float[] operands = { 100.0f };
+
+        // Act
+        float result = Evaluator.Eval("usdToEur", operands);
+
+        // Assert
+        Assert.Equal(88.0f, result);
+    }
+
+    
 
 }
