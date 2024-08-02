@@ -93,7 +93,7 @@ jobs:
   
     - name: Extract coverage percentage from HTML
       run: |
-        coverage_percentage=$(grep -oP '(?<=Total Line Coverage:</td><td class="limit-width ">)[0-9]+' coverage-report/index.htm)
+        coverage_percentage=$(sed -n 's/.*Total Line Coverage:<\/td><td class="limit-width ">[0-9]*\([0-9]\{1,2\}\)%<\/td>.*/\1/p' coverage-report/index.htm)
         echo "Coverage percentage: ${coverage_percentage:-0}"
   
         if [ -z "$coverage_percentage" ]; then
