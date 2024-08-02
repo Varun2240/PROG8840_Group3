@@ -201,11 +201,11 @@ public class CalculatorTests
     [Fact]
     public void TestUnimplemented()
     {
-        // Arrange
+       
         float[] operands = { 4, 2 };
-        string operatorName = ">"; // Assuming '>' is not implemented
+        string operatorName = ">"; 
 
-        // Act and Assert
+       
         Exception exception = Assert.Throws<Exception>(() => Evaluator.Eval(operatorName, operands));
         Assert.Equal("unimplemented", exception.Message);
     }
@@ -291,15 +291,15 @@ public class CalculatorTests
     [Fact]
     public void TestSimpleInterestWithZeroPrincipal()
     {
-        // Arrange
+       
         float principal = 0;
         float rate = 5.0f;
         int time = 2;
 
-        // Act
+        
         float interest = InterestCalculator.CalculateSimpleInterest(principal, rate, time);
 
-        // Assert
+        
         Assert.Equal(0.0f, interest);
     }
 
@@ -321,26 +321,26 @@ public class CalculatorTests
     [Fact]
     public void TestFactorialPositiveNumber()
     {
-        // Arrange
+       
         int n = 5;
 
-        // Act
+        
         int result = Factorial.Calculate(n);
 
-        // Assert
-        Assert.Equal(120, result); // 5! = 120
+        
+        Assert.Equal(120, result); 
     }
 
     [Fact]
     public void TestFactorialZero()
     {
-        // Arrange
+       
         int n = 0;
 
-        // Act
+       
         int result = Factorial.Calculate(n);
 
-        // Assert
+        
         Assert.Equal(1, result);
     }
 
@@ -356,162 +356,159 @@ public class CalculatorTests
     [Fact]
         public void TestPercentageCalculation()
     {
-        // Arrange
+        
         float percentage = 20;
         float number = 50;
 
-        // Act
+        
         float result = Percentage.CalculatePercentageOf(percentage, number);
 
-        // Assert
-        Assert.Equal(10, result); // 20% of 50 should be 10
+        
+        Assert.Equal(10, result); 
     }
 
     [Fact]
     public void TestPercentageCalculationWithZeroPercentage()
     {
-        // Arrange
+        
         float percentage = 0;
         float number = 100;
 
-        // Act
+        
         float result = Percentage.CalculatePercentageOf(percentage, number);
 
-        // Assert
+        
         Assert.Equal(0, result);
     }
 
     [Fact]
     public void TestPercentageCalculationZeroNumber()
     {
-        // Arrange
+        
         float percentage = 50;
         float number = 0;
 
-        // Act
+       
         float result = Percentage.CalculatePercentageOf(percentage, number);
 
-        // Assert
-        Assert.Equal(0, result); // 50% of 0 should be 0
+       
+        Assert.Equal(0, result);
     }
 
     [Fact]
     public void TestConvertJapanToCanada()
     {
-        // Arrange
-        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 PM JST
+        
+        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); 
 
-        // Act
+        
         DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
 
-        // Assert
-        // Calculate expected Canada time manually
-        DateTime expectedCanadaTime = japanTime + (TimeSpan.FromHours(-5) - TimeSpan.FromHours(9)); // Adjust according to actual offsets
-
+        DateTime expectedCanadaTime = japanTime + (TimeSpan.FromHours(-5) - TimeSpan.FromHours(9)); 
         Assert.Equal(expectedCanadaTime, canadaTime);
     }
     [Fact]
     public void TestSimpleInterestCalculation2()
     {
-        // Arrange
+       
         float principal = 1000;
         float rate = 5.0f;
         int time = 2;
 
-        // Act
+        
         float interest = InterestCalculator.CalculateSimpleInterest(principal, rate, time);
 
-        // Assert
+       
         Assert.Equal(100.0f, interest);
     }
 
     [Fact]
     public void TestKgToLbConversion()
     {
-        // Arrange
+        
         float kg = 10.0f;
 
-        // Act
+       
         float lb = UnitConverter.ConvertFromKgToLb(kg);
 
-        // Assert
-        Assert.Equal(22.0462f, lb, 4); // Adjust precision as needed
+       
+        Assert.Equal(22.0462f, lb, 4); 
     }
 
     [Fact]
     public void TestUsdToEurConversion()
     {
-        // Arrange
+       
         float usd = 100.0f;
 
-        // Act
+        
         float eur = CurrencyConverter.ConvertFromUSDToEUR(usd);
 
-        // Assert
+        
         Assert.Equal(88.0f, eur);
     }
     [Fact]
     public void TestPercentageCalculation1()
     {
-        // Arrange
+        
         float[] operands = { 20, 50 };
 
-        // Act
+       
         float result = Evaluator.Eval("%", operands);
 
-        // Assert
-        Assert.Equal(10, result); // 20% of 50 should be 10
+       
+        Assert.Equal(10, result); 
     }
 
     [Fact]
     public void TestFactorialCalculation()
     {
-        // Arrange
+        
         float[] operands = { 5 };
 
-        // Act
+       
         float result = Evaluator.Eval("!", operands);
 
-        // Assert
-        Assert.Equal(120, result); // 5! = 120
+       
+        Assert.Equal(120, result); 
     }
 
     [Fact]
     public void TestSimpleInterestCalculation1()
     {
-        // Arrange
+        
         float[] operands = { 1000, 5.0f, 2 };
 
-        // Act
+        
         float result = Evaluator.Eval("simpleInterest", operands);
 
-        // Assert
+        
         Assert.Equal(100.0f, result);
     }
 
     [Fact]
     public void TestKgToLbConversion1()
     {
-        // Arrange
+        
         float[] operands = { 10.0f };
 
-        // Act
+        
         float result = Evaluator.Eval("kgToLb", operands);
 
-        // Assert
-        Assert.Equal(22.0462f, result, 4); // Adjust precision as needed
+        
+        Assert.Equal(22.0462f, result, 4); 
     }
 
     [Fact]
     public void TestUsdToEurConversion1()
     {
-        // Arrange
+        
         float[] operands = { 100.0f };
 
-        // Act
+        
         float result = Evaluator.Eval("usdToEur", operands);
 
-        // Assert
+        
         Assert.Equal(88.0f, result);
     }
 
@@ -547,14 +544,14 @@ public class CalculatorTests
     [Fact]
     public void TestZeroForCube()
     {
-        // Arrange
+       
         float input = 0;
         float expected = 0;
 
-        // Act
+       
         float result = CubeFunction.Eval(input);
 
-        // Assert
+        
         Assert.Equal(expected, result);
     }
 
@@ -644,15 +641,14 @@ public class CalculatorTests
     [Fact]
     public void TestTimeZoneConversionJapanToCanada()
     {
-        // Arrange
-        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 PM JST
+        
+        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); 
 
-        // Act
+       
         DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
 
-        // Assert
-        // Calculate expected Canada time manually
-        DateTime expectedCanadaTime = japanTime + (TimeSpan.FromHours(-5) - TimeSpan.FromHours(9)); // Adjust according to actual offsets
+       
+        DateTime expectedCanadaTime = japanTime + (TimeSpan.FromHours(-5) - TimeSpan.FromHours(9)); 
 
         Assert.Equal(expectedCanadaTime, canadaTime);
     }
@@ -660,56 +656,56 @@ public class CalculatorTests
     [Fact]
     public void TestConvertJapanToCanada_BasicConversion()
     {
-        // Arrange
-        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 PM JST
+        
+        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); 
 
-        // Act
+        
         DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
 
-        // Assert
-        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+        
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); 
         Assert.Equal(expectedCanadaTime, canadaTime);
     }
 
     [Fact]
     public void TestConvertJapanToCanada_MidnightJapanTime()
     {
-        // Arrange
-        DateTime japanTime = new DateTime(2024, 7, 12, 0, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 AM JST
+        
+        DateTime japanTime = new DateTime(2024, 7, 12, 0, 0, 0, DateTimeKind.Unspecified); 
 
-        // Act
+        
         DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
 
-        // Assert
-        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+       
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); 
         Assert.Equal(expectedCanadaTime, canadaTime);
     }
 
     [Fact]
     public void TestConvertJapanToCanada_EveningJapanTime()
     {
-        // Arrange
-        DateTime japanTime = new DateTime(2024, 7, 12, 23, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 11:00 PM JST
+        
+        DateTime japanTime = new DateTime(2024, 7, 12, 23, 0, 0, DateTimeKind.Unspecified); 
 
-        // Act
+        
         DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
 
-        // Assert
-        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+       
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); 
         Assert.Equal(expectedCanadaTime, canadaTime);
     }
 
     [Fact]
     public void TestConvertJapanToCanada_YearEndJapanTime()
     {
-        // Arrange
-        DateTime japanTime = new DateTime(2024, 12, 31, 23, 59, 59, DateTimeKind.Unspecified); // December 31st, 2024, 11:59:59 PM JST
+        
+        DateTime japanTime = new DateTime(2024, 12, 31, 23, 59, 59, DateTimeKind.Unspecified); 
 
-        // Act
+        
         DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
 
-        // Assert
-        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+        
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); 
         Assert.Equal(expectedCanadaTime, canadaTime);
     }
 
