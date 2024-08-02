@@ -19,8 +19,10 @@ public class Prompts{
         Console.WriteLine("11. Unit Conversion: kg to lb");
         Console.WriteLine("12. Currency Conversion: USD to EUR");
         Console.WriteLine("13. Time Zone Conversion: Japan to Canada");
-
-        Console.WriteLine("14. Exit");
+        Console.WriteLine("14. Cube Function");
+        Console.WriteLine("15. Reciprocal");
+        Console.WriteLine("16. Average");
+        Console.WriteLine("17. Exit");
     }
 
 }
