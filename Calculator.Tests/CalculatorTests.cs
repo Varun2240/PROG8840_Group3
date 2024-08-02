@@ -536,46 +536,79 @@ public class CalculatorTests
     public void TestPositiveNumberForCube()
     {
         
+        float input = 3;
+        float expected = 27;
+
+       
         float result = CubeFunction.Eval(input);
 
+       
+        Assert.Equal(expected, result);
     }
 
     [Fact]
     public void TestNegativeNumberForCube()
     {
         
+        float input = -2;
+        float expected = -8;
+
+       
         float result = CubeFunction.Eval(input);
 
+        
+        Assert.Equal(expected, result);
     }
 
     [Fact]
     public void TestZeroForCube()
     {
-        
+        // Arrange
+        float input = 0;
+        float expected = 0;
+
+        // Act
         float result = CubeFunction.Eval(input);
 
+        // Assert
+        Assert.Equal(expected, result);
     }
 
     [Fact]
     public void TestPositiveNumberForReciprocal()
     {
         
+        float input = 4;
+        float expected = 0.25f;
+
+        
         float result = Reciprocal.Eval(input);
 
+        
+        Assert.Equal(expected, result, precision: 2);
     }
 
     [Fact]
     public void TestNegativeNumberForReciprocal()
     {
         
+        float input = -5;
+        float expected = -0.2f;
+
+        
         float result = Reciprocal.Eval(input);
 
+        
+        Assert.Equal(expected, result, precision: 2);
     }
 
     [Fact]
     public void TestZeroForReciprocal()
     {
-       
+        
+        float input = 0;
+
+        
         Assert.Throws<DivideByZeroException>(() => Reciprocal.Eval(input));
     }
 
@@ -583,27 +616,46 @@ public class CalculatorTests
     public void TestTwoPositiveNumbersForAverage()
     {
         
+        float number1 = 4;
+        float number2 = 6;
+        float expected = 5;
+
+        
         float result = Average.Eval(number1, number2);
 
+        
+        Assert.Equal(expected, result);
     }
 
     [Fact]
     public void TestPositiveAndNegativeNumberForAverage()
     {
        
+        float number1 = -2;
+        float number2 = 8;
+        float expected = 3;
+
+        
         float result = Average.Eval(number1, number2);
 
+        
+        Assert.Equal(expected, result);
     }
 
     [Fact]
     public void TestTwoIdenticalNumbersForAverage()
     {
-       
-        float result = Average.Eval(number1, number2);
+        
+        float number1 = 7;
+        float number2 = 7;
+        float expected = 7;
 
         
-    }
+        float result = Average.Eval(number1, number2);
 
+       
+        Assert.Equal(expected, result);
+    }
 
 
 }
