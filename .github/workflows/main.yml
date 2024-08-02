@@ -67,7 +67,7 @@ jobs:
         name: coverage-report
         path: coverage-report
 
-  check-coverage:
+   check-coverage:
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -77,17 +77,24 @@ jobs:
         name: coverage-report
         path: coverage-report
 
-    - name: Verify coverage
+    - name: Verify coverage report existence
       run: |
         if [ ! -f "coverage-report/index.htm" ]; then
           echo "Coverage report index.htm not found!"
           exit 1
         fi
 
+    - name: Check coverage percentage
+      run: |
+        # Extract coverage percentage from the HTML report
         coverage_percentage=$(grep -oP 'Total Line Coverage: \K[0-9]+' coverage-report/index.htm || echo "0")
+        echo "Coverage percentage: $coverage_percentage%"
+
+        # Check if the coverage is below 90%
         if [ "$coverage_percentage" -lt 90 ]; then
           echo "Test coverage is below 90%. Current coverage: $coverage_percentage%"
           exit 1
         else
           echo "Test coverage is above 90%. Current coverage: $coverage_percentage%"
         fi
+
