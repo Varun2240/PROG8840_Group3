@@ -67,7 +67,7 @@ jobs:
         name: coverage-report
         path: coverage-report
 
-   check-coverage:
+  check-coverage:
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -97,4 +97,5 @@ jobs:
         else
           echo "Test coverage is above 90%. Current coverage: $coverage_percentage%"
         fi
+
 
