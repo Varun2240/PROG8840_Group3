@@ -67,7 +67,7 @@ jobs:
         name: coverage-report
         path: coverage-report
 
-   check-coverage:
+  check-coverage:
       runs-on: ubuntu-latest
       needs: test
       steps:
