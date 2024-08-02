@@ -36,9 +36,9 @@ namespace Calculator{
                 case "usdToEur":
                     result = CurrencyConverter.ConvertFromUSDToEUR(Operands[0]);
                     break;
-                case "japanToCanada":
+               /* case "japanToCanada":
                     result = TimeZoneConverter.ConvertJapanToCanada(DateTime.UtcNow).Ticks;
-                    break;
+                    break;*/
 
                 default:
                     throw new Exception("unimplemented");

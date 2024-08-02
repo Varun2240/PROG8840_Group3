@@ -1,3 +1,5 @@
+using Microsoft.VisualStudio.TestPlatform.TestHost;
+
 namespace Calculator.Tests;
 
 public class CalculatorTests
@@ -270,25 +272,7 @@ public class CalculatorTests
     {
         Assert.Equal(0.0f, UnitConverter.ConvertFromKgToLb(0.0f));
     }
-    [Fact]
-    public void TestTimeZoneConversionJapanToCanada()
-    {
 
-        Assert.True(true);
-    }
-
-    [Fact]
-    public void TestTimeZoneConversionInvalidTimeZone()
-    {
-        Assert.True(true);
-    }
-
-    [Fact]
-    public void TestTimeZoneConversionSameTimeZone()
-    {
-
-        Assert.True(true);
-    }
     [Fact]
     public void TestSimpleInterestCalculation()
     {
@@ -657,5 +641,78 @@ public class CalculatorTests
         Assert.Equal(expected, result);
     }
 
+    [Fact]
+    public void TestTimeZoneConversionJapanToCanada()
+    {
+        // Arrange
+        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 PM JST
+
+        // Act
+        DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+
+        // Assert
+        // Calculate expected Canada time manually
+        DateTime expectedCanadaTime = japanTime + (TimeSpan.FromHours(-5) - TimeSpan.FromHours(9)); // Adjust according to actual offsets
+
+        Assert.Equal(expectedCanadaTime, canadaTime);
+    }
+
+    [Fact]
+    public void TestConvertJapanToCanada_BasicConversion()
+    {
+        // Arrange
+        DateTime japanTime = new DateTime(2024, 7, 12, 12, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 PM JST
+
+        // Act
+        DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+
+        // Assert
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+        Assert.Equal(expectedCanadaTime, canadaTime);
+    }
+
+    [Fact]
+    public void TestConvertJapanToCanada_MidnightJapanTime()
+    {
+        // Arrange
+        DateTime japanTime = new DateTime(2024, 7, 12, 0, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 12:00 AM JST
+
+        // Act
+        DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+
+        // Assert
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+        Assert.Equal(expectedCanadaTime, canadaTime);
+    }
+
+    [Fact]
+    public void TestConvertJapanToCanada_EveningJapanTime()
+    {
+        // Arrange
+        DateTime japanTime = new DateTime(2024, 7, 12, 23, 0, 0, DateTimeKind.Unspecified); // July 12th, 2024, 11:00 PM JST
+
+        // Act
+        DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+
+        // Assert
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+        Assert.Equal(expectedCanadaTime, canadaTime);
+    }
+
+    [Fact]
+    public void TestConvertJapanToCanada_YearEndJapanTime()
+    {
+        // Arrange
+        DateTime japanTime = new DateTime(2024, 12, 31, 23, 59, 59, DateTimeKind.Unspecified); // December 31st, 2024, 11:59:59 PM JST
+
+        // Act
+        DateTime canadaTime = TimeZoneConverter.ConvertJapanToCanada(japanTime);
+
+        // Assert
+        DateTime expectedCanadaTime = japanTime.AddHours(-14); // JST to EST conversion
+        Assert.Equal(expectedCanadaTime, canadaTime);
+    }
+
+    
 
 }
