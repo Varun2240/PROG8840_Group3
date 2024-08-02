@@ -67,44 +67,35 @@ jobs:
         name: coverage-report
         path: coverage-report
 
-  check-coverage:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - name: Download coverage report
-      uses: actions/download-artifact@v3
-      with:
-        name: coverage-report
-        path: coverage-report
+   check-coverage:
+      runs-on: ubuntu-latest
+      needs: test
+      steps:
+      - name: Download coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage-report
 
-    - name: Verify coverage report existence
-      run: |
-        if [ ! -f "coverage-report/index.htm" ]; then
-          echo "Coverage report index.htm not found!"
-          exit 1
-        fi
+      - name: Verify coverage report existence
+        run: |
+          if [ ! -f "coverage-report/index.htm" ]; then
+            echo "Coverage report index.htm not found!"
+            exit 1
+          fi
 
-    - name: Display coverage report content
-      run: |
-        echo "Listing contents of the coverage-report directory:"
-        ls -l coverage-report
-        echo "Displaying first 20 lines of coverage-report/index.htm:"
-        head -n 20 coverage-report/index.htm
+      - name: Extract coverage percentage from HTML
+        run: |
+          percentage=$(cat coverage-report/index.htm | grep -oP '<div class="large cardpercentagebar cardpercentagebar0">\K\d+(?=%)')
+          echo "Coverage percentage: $percentage%"
 
-    - name: Extract coverage percentage from HTML
-      run: |
-        coverage_percentage=$(sed -n 's/.*Total Line Coverage:<\/td><td class="limit-width ">[0-9]*\([0-9]\{1,2\}\)%<\/td>.*/\1/p' coverage-report/index.htm)
-        echo "Coverage percentage: ${coverage_percentage:-0}"
+          if [ -z "$percentage" ]; then
+            percentage=0
+          fi
 
-        if [ -z "$coverage_percentage" ]; then
-          coverage_percentage=0
-        fi
-
-        if [ "$coverage_percentage" -lt 90 ]; then
-          echo "Test coverage is below 90%. Current coverage: $coverage_percentage%"
-          exit 1
-        else
-          echo "Test coverage is at or above 90%. Current coverage: $coverage_percentage%"
-        fi
-
-        echo "Coverage percentage from HTML report: $coverage_percentage%"
+          if [ "$percentage" -lt 90 ]; then
+            echo "Test coverage is below 90%. Current coverage: $percentage%"
+            exit 1
+          else
+            echo "Test coverage is at or above 90%. Current coverage: $percentage%"
+          fi
