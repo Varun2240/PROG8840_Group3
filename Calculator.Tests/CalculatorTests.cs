@@ -531,6 +531,79 @@ public class CalculatorTests
         Assert.Equal(88.0f, result);
     }
 
-    
+    // Added sprint2
+    [Fact]
+    public void TestPositiveNumberForCube()
+    {
+        
+        float result = CubeFunction.Eval(input);
+
+    }
+
+    [Fact]
+    public void TestNegativeNumberForCube()
+    {
+        
+        float result = CubeFunction.Eval(input);
+
+    }
+
+    [Fact]
+    public void TestZeroForCube()
+    {
+        
+        float result = CubeFunction.Eval(input);
+
+    }
+
+    [Fact]
+    public void TestPositiveNumberForReciprocal()
+    {
+        
+        float result = Reciprocal.Eval(input);
+
+    }
+
+    [Fact]
+    public void TestNegativeNumberForReciprocal()
+    {
+        
+        float result = Reciprocal.Eval(input);
+
+    }
+
+    [Fact]
+    public void TestZeroForReciprocal()
+    {
+       
+        Assert.Throws<DivideByZeroException>(() => Reciprocal.Eval(input));
+    }
+
+    [Fact]
+    public void TestTwoPositiveNumbersForAverage()
+    {
+        
+        float result = Average.Eval(number1, number2);
+
+    }
+
+    [Fact]
+    public void TestPositiveAndNegativeNumberForAverage()
+    {
+       
+        float result = Average.Eval(number1, number2);
+
+    }
+
+    [Fact]
+    public void TestTwoIdenticalNumbersForAverage()
+    {
+       
+        float result = Average.Eval(number1, number2);
+
+        
+    }
+
+
 
 }
